@@ -15,3 +15,9 @@ int sum2(const std::vector<int> &values) {
   }
   return result;
 }
+
+void add1(std::vector<int> *frobbles, int d) {
+  for (size_t i = 0; i < frobbles->size(); ++i) {
+    (*frobbles)[i] += d;
+  }
+}
