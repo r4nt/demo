@@ -10,8 +10,7 @@ int sum1(const std::vector<int> &values) {
 
 int sum2(const std::vector<int> &values) {
   int result = 0;
-  for (std::vector<int>::const_iterator i = values.begin(), e = values.end();
-       i != e; ++i) {
+  for (auto i = values.begin(), e = values.end(); i != e; ++i) {
     result += *i;
   }
   return result;
