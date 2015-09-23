@@ -1,5 +1,18 @@
 #include <vector>
 
+struct Interface {
+  virtual ~Interface() {}
+  virtual int get() const = 0;
+};
+
+struct Implementation {
+  Implementation(int value) : value(new int(value)) {}
+  virtual int get() const { return *value; }
+
+protected:
+  std::auto_ptr<int> value;
+};
+
 int sum1(const std::vector<int> &values) {
   int result = 0;
   for (size_t i = 0; i < values.size(); ++i) {
