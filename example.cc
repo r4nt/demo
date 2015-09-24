@@ -9,7 +9,7 @@ struct Implementation : public Interface {
   Implementation(int value) : value(new int(value)) {}
   virtual int get() const { return *value; }
 
-protected:
+private:
   std::auto_ptr<int> value;
 };
 
