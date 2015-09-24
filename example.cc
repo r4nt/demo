@@ -5,7 +5,7 @@ struct Interface {
   virtual int get() const = 0;
 };
 
-struct Implementation {
+struct Implementation : public Interface {
   Implementation(int value) : value(new int(value)) {}
   virtual int get() const { return *value; }
 
