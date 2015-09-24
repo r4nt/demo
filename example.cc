@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 struct Interface {
   virtual ~Interface() {}
@@ -43,3 +44,31 @@ void add1(std::vector<int> *frobbles, int d) {
   }
 }
 
+using std::cout;
+double f(const double*p);
+void x(const std::vector<double> &v) {
+  for (int i = 0; i < v.size(); ++i) // bad
+    cout << v[i] << '\n';
+
+  for (auto p = v.begin(); p != v.end(); ++p) // bad
+    cout << *p << '\n';
+
+  for (auto &x : v) // OK
+    cout << x << '\n';
+
+  for (int i = 1; i < v.size();
+       ++i) // touches two elements: can't be a range-for
+    cout << v[i] + v[-1] << '\n';
+
+  for (int i = 1; i < v.size();
+       ++i) // possible side-effect: can't be a range-for
+    cout << f(&v[i]) << '\n';
+
+  for (int i = 1; i < v.size();
+       ++i) { // body messes with loop variable: can't be a range-for
+    if (i % 2)
+      ++i; // skip even elements
+    else
+      cout << v[i] << '\n';
+  }
+}
