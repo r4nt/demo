@@ -45,7 +45,7 @@ void add1(std::vector<int> *frobbles, int d) {
 }
 
 using std::cout;
-double f(const double*p);
+double f(const double *p);
 void x(const std::vector<double> &v) {
   for (int i = 0; i < v.size(); ++i) // bad
     cout << v[i] << '\n';
